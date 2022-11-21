@@ -16,7 +16,7 @@ async function showDeleteModal(id) {
 
     $('#rolesDeleteUser').empty();
 
-    await fetch("http://localhost:8080/roles")
+    await fetch("http://localhost:8080/admin/roles")
         .then(res => res.json())
         .then(roles => {
             roles.forEach(role => {
@@ -38,7 +38,7 @@ async function showDeleteModal(id) {
 
 
 async function getUser(id) {
-    let url = "http://localhost:8080/users/" + id;
+    let url = "http://localhost:8080/admin/users/" + id;
     let response = await fetch(url);
     return await response.json();
 }
@@ -51,7 +51,7 @@ function deleteUser() {
     const deleteForm = document.forms["formDeleteUser"];
     deleteForm.addEventListener("submit", ev => {
         ev.preventDefault();
-        fetch("http://localhost:8080/users/" + deleteForm.id.value, {
+        fetch("http://localhost:8080/admin/users/" + deleteForm.id.value, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

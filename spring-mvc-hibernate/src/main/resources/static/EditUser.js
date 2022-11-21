@@ -16,7 +16,7 @@ async function showEditModal(id) {
     form.password.value = user.password;
 
 
-    await fetch("http://localhost:8080/roles")
+    await fetch("http://localhost:8080/admin/roles")
         .then(res => res.json())
         .then(roles => {
             roles.forEach(role => {
@@ -53,7 +53,7 @@ function editUser() {
             })
         }
 
-        fetch("http://localhost:8080/users/" + editForm.id.value, {
+        fetch("http://localhost:8080/admin/users/" + editForm.id.value, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
